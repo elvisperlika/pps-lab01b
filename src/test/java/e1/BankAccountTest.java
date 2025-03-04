@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public abstract class BankAccountTest {
+public class BankAccountTest {
 
     protected BankAccount account;
 
@@ -17,6 +17,19 @@ public abstract class BankAccountTest {
     @Test
     void testInitiallyEmpty() {
         assertEquals(0, account.getBalance());
+    }
+
+    @Test
+    void testDeposit() {
+        account.deposit(1000);
+        assertEquals(1000, account.getBalance());
+    }
+
+    @Test
+    void testWithdraw() {
+        account.deposit(1000);
+        account.withdraw(999);
+        assertEquals(1, account.getBalance());
     }
 
 }
