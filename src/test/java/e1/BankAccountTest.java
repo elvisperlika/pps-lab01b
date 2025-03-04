@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BankAccountTest {
+public abstract class BankAccountTest {
 
-    BankAccount bankAccount;
+    protected BankAccount account;
 
     @BeforeEach
     void init() {
-        bankAccount = new DefaultBankAccount();
+        account = new DefaultBankAccount();
     }
 
     @Test
     void testInitiallyEmpty() {
-        assertEquals(0, bankAccount.getBalance());
+        assertEquals(0, account.getBalance());
     }
 
 }
