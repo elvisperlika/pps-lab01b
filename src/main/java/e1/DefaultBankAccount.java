@@ -2,8 +2,7 @@ package e1;
 
 public class DefaultBankAccount implements BankAccount {
 
-    private int balance = 0;
-    private final CoreBankAccount core;
+    protected final CoreBankAccount core;
 
     public DefaultBankAccount() {
         this.core = new CoreBankAccount(this);

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SilverBankAccountTest extends BankAccountTest {
+public class SilverBankAccountTest extends DefaultBankAccountTest {
 
     @BeforeEach
     void init(){
@@ -14,13 +14,7 @@ public class SilverBankAccountTest extends BankAccountTest {
     }
 
     @Test
-    public void testCanDeposit() {
-        super.account.deposit(1000);
-        assertEquals(1000, super.account.getBalance());
-    }
-
-    @Test
-    public void testCanWithdraw() {
+    public void testWithdraw() {
         super.account.deposit(1000);
         super.account.withdraw(200);
         assertEquals(799, super.account.getBalance());
