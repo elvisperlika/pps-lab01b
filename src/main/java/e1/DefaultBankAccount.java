@@ -3,6 +3,7 @@ package e1;
 public class DefaultBankAccount implements BankAccount {
 
     protected final CoreBankAccount core;
+    protected int fee = 0;
 
     public DefaultBankAccount() {
         this.core = new CoreBankAccount(this);
@@ -21,5 +22,9 @@ public class DefaultBankAccount implements BankAccount {
     @Override
     public void withdraw(int amount) {
         this.core.withdraw(amount);
+    }
+
+    protected int getFee() {
+        return this.fee;
     }
 }
