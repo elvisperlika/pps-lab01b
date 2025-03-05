@@ -10,7 +10,7 @@ public class GoldBankAccountTest extends TemplateBankAccountDecoratorTest {
 
     @BeforeEach
     void init() {
-        super.account = new GoldBankAccount(new CoreBanckAccountWithFee(0));
+        super.account = new GoldBankAccount(new CoreBankAccount());
     }
 
     @Test

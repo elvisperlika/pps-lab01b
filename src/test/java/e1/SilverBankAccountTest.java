@@ -12,7 +12,7 @@ public class SilverBankAccountTest extends TemplateBankAccountDecoratorTest {
 
     @BeforeEach
     void init(){
-        super.account = new SilverBankAccount(new CoreBanckAccountWithFee(SILVER_FEE));
+        super.account = new SilverBankAccount(new CoreBankAccount());
     }
 
     @Test

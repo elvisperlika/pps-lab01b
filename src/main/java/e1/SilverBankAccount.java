@@ -3,6 +3,7 @@ package e1;
 public class SilverBankAccount extends TemplateBankAccountDecorator {
 
     private static final int SILVER_MIN_BALANCE = 0;
+    private static final int SILVER_FEE = 1;
 
     public SilverBankAccount(BankAccount bankAccount) {
         super(bankAccount);
@@ -13,6 +14,6 @@ public class SilverBankAccount extends TemplateBankAccountDecorator {
         if ((super.getBalance() - amount) < SILVER_MIN_BALANCE) {
             throw new IllegalArgumentException();
         }
-        this.bankAccount.withdraw(amount);
+        this.bankAccount.withdraw(amount + SILVER_FEE);
     }
 }
