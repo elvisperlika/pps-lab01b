@@ -1,16 +1,18 @@
 package e1;
 
-public class SilverBankAccount extends DefaultBankAccount {
+public class SilverBankAccount extends TemplateBankAccountDecorator {
 
-    public SilverBankAccount() {
-        super();
+    private static final int SILVER_MIN_BALANCE = 0;
+
+    public SilverBankAccount(BankAccount bankAccount) {
+        super(bankAccount);
     }
 
     @Override
     public void withdraw(int amount) {
-        if (this.getBalance() < amount){
-            throw new IllegalStateException();
+        if ((super.getBalance() - amount) < SILVER_MIN_BALANCE) {
+            throw new IllegalArgumentException();
         }
-        super.core.withdraw(amount + super.getFee());
+        this.bankAccount.withdraw(amount);
     }
 }

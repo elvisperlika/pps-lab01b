@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SilverBankAccountTest extends DefaultBankAccountTest {
+public class SilverBankAccountTest extends TemplateBankAccountDecoratorTest {
+
+    private static final int SILVER_FEE = 1;
 
     @BeforeEach
     void init(){
-        super.account = new SilverBankAccount();
+        super.account = new SilverBankAccount(new CoreBanckAccountWithFee(SILVER_FEE));
     }
 
     @Test
@@ -23,7 +25,7 @@ public class SilverBankAccountTest extends DefaultBankAccountTest {
     @Test
     public void testCannotWithdrawMoreThanAvailable(){
         super.account.deposit(1000);
-        assertThrows(IllegalStateException.class, () -> super.account.withdraw(1200));
+        assertThrows(IllegalArgumentException.class, () -> super.account.withdraw(1200));
     }
 
 }

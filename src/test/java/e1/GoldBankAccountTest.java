@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class GoldBankAccountTest extends DefaultBankAccountTest {
+public class GoldBankAccountTest extends TemplateBankAccountDecoratorTest {
 
     @BeforeEach
     void init() {
-        super.account = new GoldBankAccount();
+        super.account = new GoldBankAccount(new CoreBanckAccountWithFee(0));
     }
 
     @Test
@@ -28,8 +28,9 @@ public class GoldBankAccountTest extends DefaultBankAccountTest {
     }
 
     @Test
-    void testIllegalNegativeBalance() {
+    void testOverdraft() {
         super.account.deposit(1000);
         assertThrows(IllegalArgumentException.class, () -> super.account.withdraw(1600));
     }
+
 }

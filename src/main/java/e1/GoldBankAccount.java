@@ -1,16 +1,19 @@
 package e1;
 
-public class GoldBankAccount extends DefaultBankAccount {
+public class GoldBankAccount extends TemplateBankAccountDecorator {
 
-    private int minBalance = -500;
+    private static final int GOLD_MIN_BALANCE = -500;
+
+    public GoldBankAccount(BankAccount bankAccount) {
+        super(bankAccount);
+    }
 
     @Override
     public void withdraw(int amount) {
-        int newBalance = super.getBalance() - amount;
-        if (newBalance < minBalance) {
-            throw new IllegalArgumentException("This amount is not allowed, balance can't be less thant " + this.minBalance);
+        if ((super.getBalance() - amount) < GOLD_MIN_BALANCE) {
+            throw new IllegalArgumentException();
         }
-        super.core.withdraw(amount);
+        this.bankAccount.withdraw(amount);
     }
 
 }
