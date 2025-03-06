@@ -7,4 +7,5 @@ public interface ChessPawn {
     int getX();
 
     int getY();
+
 }

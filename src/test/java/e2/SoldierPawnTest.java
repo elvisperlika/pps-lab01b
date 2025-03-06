@@ -6,24 +6,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class HorsePawnTest {
+public class SoldierPawnTest {
 
-    private ChessPawn horse;
+    private ChessPawn soldier;
 
     @BeforeEach
     void init() {
-        this.horse = new Horse(0, 0);
+        this.soldier = new Soldier(0, 0);
     }
 
     @Test
     void testLegalMove() {
-        this.horse.move(2, 1);
-        assertEquals(2, this.horse.getX());
-        assertEquals(1, this.horse.getY());
+        this.soldier.move(0, 1);
+        assertEquals(0, this.soldier.getX());
+        assertEquals(1, this.soldier.getY());
     }
 
     @Test
     void testIllegalMove() {
-        assertThrows(IllegalArgumentException.class, () -> this.horse.move(1, 1));
+        assertThrows(IllegalArgumentException.class, () -> this.soldier.move(3, 2));
     }
 }
